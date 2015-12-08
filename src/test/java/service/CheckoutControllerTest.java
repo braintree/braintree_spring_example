@@ -55,6 +55,10 @@ public class CheckoutControllerTest {
     @Test
     public void rendersView() throws Exception {
         mockMvc.perform(get("/checkout"))
-            .andExpect(view().name("checkout"));
+            .andExpect(view().name("checkout"))
+            .andExpect(model().hasNoErrors())
+            .andExpect(model().attributeExists("clientToken"))
+            .andExpect(xpath("//script[@src='https://js.braintreegateway.com/v2/braintree.js']").exists());
+
     }
 }

@@ -6,6 +6,23 @@
 </head>
 <body>
   <h1>Braintree Checkout</h1>
-  <p th:text="'Client Token: ' + ${clientToken}"/>
+
+  <form method="post" id="checkout" action="/checkout.php">
+      <label for="amount">Amount</label>
+      <input type="text" name="amount" id="amount" value="10.00"/>
+      <div id="payment-form"></div>
+      <input type="submit" value="Pay Now"/>
+  </form>
+
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var client_token = [[${clientToken}]];
+    braintree.setup(client_token, "dropin", {
+      container: "payment-form"
+    });
+    /*]]>*/
+  </script>
+
 </body>
 </html>
