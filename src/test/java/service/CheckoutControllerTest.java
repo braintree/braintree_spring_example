@@ -1,4 +1,4 @@
-package hello;
+package service;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class GreetingControllerTest {
+public class CheckoutControllerTest {
 
     private MockMvc mockMvc;
 
@@ -48,7 +48,13 @@ public class GreetingControllerTest {
 
     @Test
     public void returnsOK() throws Exception {
-        mockMvc.perform(get("/greeting"))
+        mockMvc.perform(get("/checkout"))
             .andExpect(status().isOk());
+    }
+
+    @Test
+    public void rendersView() throws Exception {
+        mockMvc.perform(get("/checkout"))
+            .andExpect(view().name("checkout"));
     }
 }
