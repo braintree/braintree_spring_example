@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Braintree Transaction</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h1>Braintree Transaction</h1>
+  <p th:text="'Transaction amount: ' + ${transaction.getAmount()}"/>
+  <p th:text="'Transaction id: ' + ${transaction.getId()}"/>
+</body>
+</html>

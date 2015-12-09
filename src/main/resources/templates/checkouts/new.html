@@ -5,9 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+  <p th:text="${message}"/>
+
   <h1>Braintree Checkout</h1>
 
-  <form method="post" id="checkout" action="/checkout.php">
+  <form method="post" id="checkout" action="/checkouts.html">
       <label for="amount">Amount</label>
       <input type="text" name="amount" id="amount" value="10.00"/>
       <div id="payment-form"></div>
