@@ -24,7 +24,6 @@ import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -56,8 +55,24 @@ public class CheckoutControllerTest {
     }
 
     @Test
+    public void rendersErrorsOnTransactionFailure() throws Exception {
+        mockMvc.perform(post("/checkouts")
+                .param("payment_method_nonce", "fake-valid-nonce")
+                .param("amount", "2000.00"))
+            .andExpect(status().isFound())
+            .andExpect(flash().attributeExists("errors"))
+            .andExpect(flash().attributeExists("errorDetails"));
+    }
+
+    @Test
     public void redirectsOnTransactionNotFound() throws Exception {
         mockMvc.perform(post("/checkouts/invalid-transaction"))
+            .andExpect(status().isFound());
+    }
+
+    @Test
+    public void redirectsRootToNew() throws Exception {
+        mockMvc.perform(get("/"))
             .andExpect(status().isFound());
     }
 }
