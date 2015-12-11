@@ -5,8 +5,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-  <h1>Braintree Transaction</h1>
-  <p th:text="'Transaction amount: ' + ${transaction.getAmount()}"/>
-  <p th:text="'Transaction id: ' + ${transaction.getId()}"/>
+  <h1 th:text="'Transaction ' + ${transaction.getId()}"/>
+
+  <h2>Details</h2>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>id</td><td th:text="${transaction.getId()}"/></tr>
+    <tr><td>type</td><td th:text="${transaction.getType()}"/></tr>
+    <tr><td>amount</td><td th:text="${transaction.getAmount()}"/></tr>
+    <tr><td>status</td><td th:text="${transaction.getStatus()}"/></tr>
+  </table>
+
+  <h2>Credit Card Details</h2>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>token</td><td th:text="${creditCard.getToken()}"/></tr>
+    <tr><td>bin</td> <td th:text="${creditCard.getBin()}"/></tr>
+    <tr><td>last_4</td> <td th:text="${creditCard.getLast4()}"/></tr>
+    <tr><td>card_type</td><td th:text="${creditCard.getCardType()}"/></tr>
+    <tr><td>expiration_date</td><td th:text="${creditCard.getExpirationDate()}"/></tr>
+    <tr><td>cardholder_name</td><td th:text="${creditCard.getCardholderName()}"/></tr>
+    <tr><td>customer_location</td><td th:text="${creditCard.getCustomerLocation()}"/></tr>
+  </table>
+
+<h2>Customer Details</h2>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>id</td><td th:text="${customer.getId()}"/></tr>
+    <tr><td>first_name</td><td th:text="${customer.getFirstName()}"/></tr>
+    <tr><td>last_name</td><td th:text="${customer.getLastName()}"/></tr>
+    <tr><td>email</td><td th:text="${customer.getEmail()}"/></tr>
+    <tr><td>company</td><td th:text="${customer.getCompany()}"/></tr>
+    <tr><td>website</td><td th:text="${customer.getWebsite()}"/></tr>
+    <tr><td>phone</td><td th:text="${customer.getPhone()}"/></tr>
+    <tr><td>fax</td><td th:text="${customer.getFax()}"/></tr>
+  </table>
 </body>
 </html>
