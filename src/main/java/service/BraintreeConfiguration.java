@@ -17,7 +17,7 @@ public class BraintreeConfiguration {
     public BraintreeGateway gateway() {
         try {
             Properties properties = new Properties();
-            String fileName = "src/config.properties";
+            String fileName = "config.properties";
             inputStream = new FileInputStream(fileName);
 
             if (inputStream != null) {

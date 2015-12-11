@@ -3,4 +3,4 @@ gradle
 build
 gradlew
 gradlew.bat
-*.properties
+config.properties
