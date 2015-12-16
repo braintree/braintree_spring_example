@@ -20,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class CheckoutController {
 
-    private BraintreeConfiguration config = new BraintreeConfiguration();
+    private static String configFileName = "config.properties";
+
+    private BraintreeConfiguration config = new BraintreeConfiguration(configFileName);
     private BraintreeGateway gateway = config.gateway();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

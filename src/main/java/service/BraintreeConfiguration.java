@@ -10,38 +10,45 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class BraintreeConfiguration {
+    private static Environment environment;
+    private static String merchantId;
+    private static String publicKey;
+    private static String privateKey;
 
-    BraintreeGateway gateway;
-    InputStream inputStream = null;
+    public BraintreeConfiguration(String fileName) {
+        readProperties(fileName);
+    }
 
-    public BraintreeGateway gateway() {
+    private void readProperties(String fileName) {
+        InputStream inputStream = null;
+        Properties properties = new Properties();
+
         try {
-            Properties properties = new Properties();
-            String fileName = "config.properties";
             inputStream = new FileInputStream(fileName);
-
-            if (inputStream != null) {
-                properties.load(inputStream);
-                Environment environment = properties.getProperty("environment").contains("SANDBOX") ? Environment.SANDBOX : Environment.PRODUCTION;
-                String merchantId = properties.getProperty("merchantId");
-                String publicKey = properties.getProperty("publicKey");
-                String privateKey = properties.getProperty("privateKey");
-                gateway = new BraintreeGateway(environment, merchantId, publicKey, privateKey);
-            } else {
-                throw new FileNotFoundException(fileName + " not found");
-            }
-        } catch (Exception e) {
-            System.out.println("Exception: " + e);
-        } finally {
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
-                System.out.println("IOException: " + e);
-            }
+        } catch (FileNotFoundException e) {
+            System.err.println(fileName + " not found.");
+            return;
         }
 
-        return gateway;
+        try {
+            try {
+                properties.load(inputStream);
+
+                environment = properties.getProperty("environment").contains("SANDBOX") ? Environment.SANDBOX : Environment.PRODUCTION;
+                merchantId = properties.getProperty("merchantId");
+                publicKey = properties.getProperty("publicKey");
+                privateKey = properties.getProperty("privateKey");
+            } catch (Exception e) {
+                System.err.println("Exception: " + e);
+            } finally {
+                inputStream.close();
+            }
+        } catch (IOException e) {
+            System.err.println("IOException: " + e);
+        }
+    }
+
+    public BraintreeGateway gateway() {
+        return new BraintreeGateway(environment, merchantId, publicKey, privateKey);
     }
 }
