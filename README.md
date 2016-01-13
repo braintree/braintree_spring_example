@@ -2,11 +2,10 @@
 
 An example Braintree integration for Spring (Java)
 
-1. Install gradle and project dependencies:
+1. [Install gradle](https://docs.gradle.org/current/userguide/installation.html) and project dependencies:
 
   ```
-  brew install gradle
-  ./gradlew build
+  ./gradlew build -x test
   ```
 
 2. Copy the `example.config.properties` to `config.properties` and fill in your Braintree API credentials. Credentials can be found by navigating to  Account > My user > View API Keys in the Braintree control panel. Full instructions can be [found on our support site](https://articles.braintreepayments.com/control-panel/important-gateway-credentials#api-credentials).
