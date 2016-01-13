@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Braintree Transaction</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Braintree Transaction</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
   <h1 th:text="'Transaction ' + ${transaction.getId()}"/>
@@ -28,7 +28,7 @@
     <tr><td>customer_location</td><td th:text="${creditCard.getCustomerLocation()}"/></tr>
   </table>
 
-<h2>Customer Details</h2>
+  <h2>Customer Details</h2>
   <table>
     <tr><th>Property</th><th>Value</th></tr>
     <tr><td>id</td><td th:text="${customer.getId()}"/></tr>
