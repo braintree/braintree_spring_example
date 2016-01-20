@@ -60,7 +60,6 @@ public class CheckoutControllerTest {
                 .param("payment_method_nonce", "fake-valid-nonce")
                 .param("amount", "2000.00"))
             .andExpect(status().isFound())
-            .andExpect(flash().attributeExists("errors"))
             .andExpect(flash().attributeExists("errorDetails"));
     }
 

@@ -8,6 +8,7 @@ import com.braintreegateway.Transaction;
 import com.braintreegateway.TransactionRequest;
 import com.braintreegateway.CreditCard;
 import com.braintreegateway.Customer;
+import com.braintreegateway.ValidationError;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +53,16 @@ public class CheckoutController {
         if (result.isSuccess()) {
             Transaction transaction = result.getTarget();
             return "redirect:checkouts/" + transaction.getId();
-        } else {
+        } else if (result.getTransaction() != null) {
             Transaction transaction = result.getTransaction();
-            redirectAttributes.addFlashAttribute("errors", "Transaction failed!");
-            redirectAttributes.addFlashAttribute("errorDetails", transaction.getStatus());
+            redirectAttributes.addFlashAttribute("errorDetails", "Transaction status - " + transaction.getStatus());
+            return "redirect:checkouts/" + transaction.getId();
+        } else {
+            String errorString = "";
+            for (ValidationError error : result.getErrors().getAllDeepValidationErrors()) {
+               errorString += "Error: " + error.getCode() + " - " + error.getMessage() + "\n";
+            }
+            redirectAttributes.addFlashAttribute("errorDetails", errorString);
             return "redirect:checkouts";
         }
     }
