@@ -31,20 +31,17 @@ public class BraintreeConfiguration {
         }
 
         try {
-            try {
-                properties.load(inputStream);
+            properties.load(inputStream);
 
-                environment = properties.getProperty("environment").contains("SANDBOX") ? Environment.SANDBOX : Environment.PRODUCTION;
-                merchantId = properties.getProperty("merchantId");
-                publicKey = properties.getProperty("publicKey");
-                privateKey = properties.getProperty("privateKey");
-            } catch (Exception e) {
-                System.err.println("Exception: " + e);
-            } finally {
-                inputStream.close();
-            }
-        } catch (IOException e) {
-            System.err.println("IOException: " + e);
+            environment = properties.getProperty("environment").contains("SANDBOX") ? Environment.SANDBOX : Environment.PRODUCTION;
+            merchantId = properties.getProperty("merchantId");
+            publicKey = properties.getProperty("publicKey");
+            privateKey = properties.getProperty("privateKey");
+        } catch (Exception e) {
+            System.err.println("Exception: " + e);
+        } finally {
+            try { inputStream.close(); }
+            catch (IOException e) { System.err.println("Exception: " + e); }
         }
     }
 
