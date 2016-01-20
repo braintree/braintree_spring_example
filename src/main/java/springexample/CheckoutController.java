@@ -1,4 +1,4 @@
-package service;
+package springexample;
 
 import java.math.BigDecimal;
 

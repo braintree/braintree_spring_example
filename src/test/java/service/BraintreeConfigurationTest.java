@@ -1,4 +1,4 @@
-package service;
+package springexample;
 
 import java.io.File;
 import java.io.FileWriter;

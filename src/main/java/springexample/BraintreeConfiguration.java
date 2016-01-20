@@ -1,4 +1,4 @@
-package service;
+package springexample;
 
 import com.braintreegateway.BraintreeGateway;
 import com.braintreegateway.Environment;
