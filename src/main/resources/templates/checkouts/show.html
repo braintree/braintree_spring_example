@@ -16,6 +16,8 @@
     <tr><td>type</td><td th:text="${transaction.getType()}"/></tr>
     <tr><td>amount</td><td th:text="${transaction.getAmount()}"/></tr>
     <tr><td>status</td><td th:text="${transaction.getStatus()}"/></tr>
+    <tr><td>created_at</td><td th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getCreatedAt().getTime())}"/></tr>
+    <tr><td>updated_at</td><td th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getUpdatedAt().getTime())}"/></tr>
   </table>
 
   <h2>Credit Card Details</h2>
@@ -42,5 +44,9 @@
     <tr><td>phone</td><td th:text="${customer.getPhone()}"/></tr>
     <tr><td>fax</td><td th:text="${customer.getFax()}"/></tr>
   </table>
+
+  <p>
+    <a href="/checkouts">Return to checkout page</a>
+  </p>
 </body>
 </html>
