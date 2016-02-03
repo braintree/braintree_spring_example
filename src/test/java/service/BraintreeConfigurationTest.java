@@ -22,7 +22,7 @@ public class BraintreeConfigurationTest {
         File mockConfigFile = File.createTempFile("config.properties", ".tmp");
         FileWriter fileWriter = new FileWriter(mockConfigFile);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write("environment=BraintreeGateway.Environment.SANDBOX\n");
+        bufferedWriter.write("environment=sandbox\n");
         bufferedWriter.write("merchantId=MERCHANT_ID\n");
         bufferedWriter.write("publicKey=PUBLIC_KEY\n");
         bufferedWriter.write("privateKey=PRIVATE_KEY\n");

@@ -1,7 +1,6 @@
 package springexample;
 
 import com.braintreegateway.BraintreeGateway;
-import com.braintreegateway.Environment;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -10,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class BraintreeConfiguration {
-    private static Environment environment;
+    private static String environment;
     private static String merchantId;
     private static String publicKey;
     private static String privateKey;
@@ -33,7 +32,7 @@ public class BraintreeConfiguration {
         try {
             properties.load(inputStream);
 
-            environment = properties.getProperty("environment").contains("SANDBOX") ? Environment.SANDBOX : Environment.PRODUCTION;
+            environment = properties.getProperty("environment");
             merchantId = properties.getProperty("merchantId");
             publicKey = properties.getProperty("publicKey");
             privateKey = properties.getProperty("privateKey");
