@@ -22,10 +22,10 @@ public class BraintreeConfigurationTest {
         File mockConfigFile = File.createTempFile("config.properties", ".tmp");
         FileWriter fileWriter = new FileWriter(mockConfigFile);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write("environment=sandbox\n");
-        bufferedWriter.write("merchantId=MERCHANT_ID\n");
-        bufferedWriter.write("publicKey=PUBLIC_KEY\n");
-        bufferedWriter.write("privateKey=PRIVATE_KEY\n");
+        bufferedWriter.write("BT_ENVIRONMENT=sandbox\n");
+        bufferedWriter.write("BT_MERCHANT_ID=MERCHANT_ID\n");
+        bufferedWriter.write("BT_PUBLIC_KEY=PUBLIC_KEY\n");
+        bufferedWriter.write("BT_PRIVATE_KEY=PRIVATE_KEY\n");
         bufferedWriter.close();
         configuration = new BraintreeConfiguration(mockConfigFile.getAbsolutePath());
         mockConfigFile.delete();

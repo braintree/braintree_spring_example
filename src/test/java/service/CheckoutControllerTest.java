@@ -64,6 +64,21 @@ public class CheckoutControllerTest {
     }
 
     @Test
+    public void rendersErrorsOnInvalidAmount() throws Exception {
+        mockMvc.perform(post("/checkouts")
+                .param("payment_method_nonce", "fake-valid-nonce")
+                .param("amount", "-1.00"))
+            .andExpect(status().isFound())
+            .andExpect(flash().attributeExists("errorDetails"));
+
+        mockMvc.perform(post("/checkouts")
+                .param("payment_method_nonce", "fake-valid-nonce")
+                .param("amount", "not_a_valid_amount"))
+            .andExpect(status().isFound())
+            .andExpect(flash().attributeExists("errorDetails"));
+    }
+
+    @Test
     public void redirectsOnTransactionNotFound() throws Exception {
         mockMvc.perform(post("/checkouts/invalid-transaction"))
             .andExpect(status().isFound());

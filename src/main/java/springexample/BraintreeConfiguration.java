@@ -32,10 +32,10 @@ public class BraintreeConfiguration {
         try {
             properties.load(inputStream);
 
-            environment = properties.getProperty("environment");
-            merchantId = properties.getProperty("merchantId");
-            publicKey = properties.getProperty("publicKey");
-            privateKey = properties.getProperty("privateKey");
+            environment = properties.getProperty("BT_ENVIRONMENT");
+            merchantId = properties.getProperty("BT_MERCHANT_ID");
+            publicKey = properties.getProperty("BT_PUBLIC_KEY");
+            privateKey = properties.getProperty("BT_PRIVATE_KEY");
         } catch (Exception e) {
             System.err.println("Exception: " + e);
         } finally {

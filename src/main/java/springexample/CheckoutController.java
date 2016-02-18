@@ -41,8 +41,16 @@ public class CheckoutController {
 
     @RequestMapping(value = "/checkouts", method = RequestMethod.POST)
     public String postForm(@RequestParam("amount") String amount, @RequestParam("payment_method_nonce") String nonce, Model model, final RedirectAttributes redirectAttributes) {
+        BigDecimal decimalAmount;
+        try {
+            decimalAmount = new BigDecimal(amount);
+        } catch (NumberFormatException e) {
+            redirectAttributes.addFlashAttribute("errorDetails", "Error: 81503: Amount is an invalid format.");
+            return "redirect:checkouts";
+        }
+
         TransactionRequest request = new TransactionRequest()
-            .amount(new BigDecimal(amount))
+            .amount(decimalAmount)
             .paymentMethodNonce(nonce)
             .options()
                 .submitForSettlement(true)
@@ -55,12 +63,12 @@ public class CheckoutController {
             return "redirect:checkouts/" + transaction.getId();
         } else if (result.getTransaction() != null) {
             Transaction transaction = result.getTransaction();
-            redirectAttributes.addFlashAttribute("errorDetails", "Transaction status - " + transaction.getStatus());
+            redirectAttributes.addFlashAttribute("errorDetails", "Transaction status - " + transaction.getStatus().name().toLowerCase());
             return "redirect:checkouts/" + transaction.getId();
         } else {
             String errorString = "";
             for (ValidationError error : result.getErrors().getAllDeepValidationErrors()) {
-               errorString += "Error: " + error.getCode() + " - " + error.getMessage() + "\n";
+               errorString += "Error: " + error.getCode() + ": " + error.getMessage() + "\n";
             }
             redirectAttributes.addFlashAttribute("errorDetails", errorString);
             return "redirect:checkouts";
