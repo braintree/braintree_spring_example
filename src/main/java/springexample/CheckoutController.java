@@ -1,10 +1,12 @@
 package springexample;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import com.braintreegateway.BraintreeGateway;
 import com.braintreegateway.Result;
 import com.braintreegateway.Transaction;
+import com.braintreegateway.Transaction.Status;
 import com.braintreegateway.TransactionRequest;
 import com.braintreegateway.CreditCard;
 import com.braintreegateway.Customer;
@@ -25,6 +27,16 @@ public class CheckoutController {
 
     private BraintreeConfiguration config = new BraintreeConfiguration(configFileName);
     private BraintreeGateway gateway = config.gateway();
+
+     private Status[] TRANSACTION_SUCCESS_STATUSES = new Status[] {
+        Transaction.Status.AUTHORIZED,
+        Transaction.Status.AUTHORIZING,
+        Transaction.Status.SETTLED,
+        Transaction.Status.SETTLEMENT_CONFIRMED,
+        Transaction.Status.SETTLEMENT_PENDING,
+        Transaction.Status.SETTLING,
+        Transaction.Status.SUBMITTED_FOR_SETTLEMENT
+     };
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Model model) {
@@ -63,7 +75,6 @@ public class CheckoutController {
             return "redirect:checkouts/" + transaction.getId();
         } else if (result.getTransaction() != null) {
             Transaction transaction = result.getTransaction();
-            redirectAttributes.addFlashAttribute("errorDetails", "Transaction status - " + transaction.getStatus().name().toLowerCase());
             return "redirect:checkouts/" + transaction.getId();
         } else {
             String errorString = "";
@@ -90,6 +101,7 @@ public class CheckoutController {
             return "redirect:/checkouts";
         }
 
+        model.addAttribute("isSuccess", Arrays.asList(TRANSACTION_SUCCESS_STATUSES).contains(transaction.getStatus()));
         model.addAttribute("transaction", transaction);
         model.addAttribute("creditCard", creditCard);
         model.addAttribute("customer", customer);

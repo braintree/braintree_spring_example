@@ -59,8 +59,7 @@ public class CheckoutControllerTest {
         mockMvc.perform(post("/checkouts")
                 .param("payment_method_nonce", "fake-valid-nonce")
                 .param("amount", "2000.00"))
-            .andExpect(status().isFound())
-            .andExpect(flash().attributeExists("errorDetails"));
+            .andExpect(status().isFound());
     }
 
     @Test
