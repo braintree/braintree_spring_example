@@ -23,10 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class CheckoutController {
 
-    private static String configFileName = "config.properties";
-
-    private BraintreeConfiguration config = new BraintreeConfiguration(configFileName);
-    private BraintreeGateway gateway = config.gateway();
+    private BraintreeGateway gateway = Application.gateway;
 
      private Status[] TRANSACTION_SUCCESS_STATUSES = new Status[] {
         Transaction.Status.AUTHORIZED,

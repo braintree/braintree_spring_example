@@ -2,8 +2,11 @@ package springexample;
 
 import java.math.BigDecimal;
 
+import java.io.File;
+
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -33,6 +36,11 @@ public class CheckoutControllerTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
+
+    @BeforeClass
+    public static void setupConfig() {
+        Application.gateway = BraintreeGatewayFactory.fromConfigFile(new File("config.properties"));
+    }
 
     @Before
     public void setup() throws Exception {
