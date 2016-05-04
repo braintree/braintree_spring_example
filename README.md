@@ -20,6 +20,12 @@ An example Braintree integration for Spring (Java).
 
   This starts the server on port `8080` listening to all interfaces.
 
+## Deploying to Heroku
+
+You can deploy this app directly to Heroku to see the app live. Skip the setup instructions above and click the button below. This will walk you through getting this app up and running on Heroku in minutes.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/braintree/braintree_spring_example&env[BT_ENVIRONMENT]=sandbox)
+
 ## Running tests
 
 All tests are integration tests. Integration tests make API calls to Braintree and require that you set up your Braintree credentials. You can run this project's integration tests by adding your sandbox API credentials to `config.properties` and running `./gradlew test`.
