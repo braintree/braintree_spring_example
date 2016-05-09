@@ -1,5 +1,7 @@
 # Braintree Spring Example
 
+[![Build Status](https://travis-ci.org/braintree/braintree_spring_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_spring_example)
+
 An example Braintree integration for Spring (Java).
 
 ## Setup Instructions

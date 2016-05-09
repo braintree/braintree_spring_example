@@ -39,7 +39,16 @@ public class CheckoutControllerTest {
 
     @BeforeClass
     public static void setupConfig() {
-        Application.gateway = BraintreeGatewayFactory.fromConfigFile(new File("config.properties"));
+        File configFile = new File("config.properties");
+        try {
+            if(configFile.exists() && !configFile.isDirectory()) {
+                Application.gateway = BraintreeGatewayFactory.fromConfigFile(configFile);
+            } else {
+                Application.gateway = BraintreeGatewayFactory.fromConfigMapping(System.getenv());
+            }
+        } catch (NullPointerException e) {
+            System.err.println("Could not load Braintree configuration from config file or system environment.");
+        }
     }
 
     @Before
