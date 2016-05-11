@@ -1,0 +1,4 @@
+language: java
+notifications:
+  email:
+    - external-ci-notifications+braintree_spring_example@getbraintree.com
