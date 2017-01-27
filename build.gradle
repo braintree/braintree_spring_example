@@ -26,7 +26,7 @@ targetCompatibility = 1.7
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("com.braintreepayments.gateway:braintree-java:2.54.0")
+    compile("com.braintreepayments.gateway:braintree-java:2.67.0")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile("junit:junit")
     testCompile("com.jayway.restassured:spring-mock-mvc:2.4.1")
