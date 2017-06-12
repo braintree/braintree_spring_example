@@ -68,7 +68,7 @@ public class CheckoutControllerTest {
             .andExpect(view().name("checkouts/new"))
             .andExpect(model().hasNoErrors())
             .andExpect(model().attributeExists("clientToken"))
-            .andExpect(xpath("//script[@src='https://js.braintreegateway.com/js/braintree-2.27.0.min.js']").exists());
+            .andExpect(xpath("//script[@src='https://js.braintreegateway.com/web/dropin/1.2.0/js/dropin.min.js']").exists());
     }
 
     @Test
