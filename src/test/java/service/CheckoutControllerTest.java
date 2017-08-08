@@ -67,8 +67,7 @@ public class CheckoutControllerTest {
         mockMvc.perform(get("/checkouts"))
             .andExpect(view().name("checkouts/new"))
             .andExpect(model().hasNoErrors())
-            .andExpect(model().attributeExists("clientToken"))
-            .andExpect(xpath("//script[@src='https://js.braintreegateway.com/web/dropin/1.2.0/js/dropin.min.js']").exists());
+            .andExpect(model().attributeExists("clientToken"));
     }
 
     @Test
