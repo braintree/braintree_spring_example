@@ -3,14 +3,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'bt-example'
@@ -25,11 +25,11 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("com.braintreepayments.gateway:braintree-java:2.71.0")
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE")
+    compile("com.braintreepayments.gateway:braintree-java:2.73.0")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile("junit:junit")
-    testCompile("io.rest-assured:spring-mock-mvc:3.0.2")
+    testCompile("io.rest-assured:spring-mock-mvc:3.0.3")
 }
 
 task wrapper(type: Wrapper) {
