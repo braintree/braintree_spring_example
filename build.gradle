@@ -30,6 +30,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     testCompile("junit:junit")
     testCompile("io.rest-assured:spring-mock-mvc:3.0.3")
+    testCompile("org.springframework.boot:spring-boot-starter-test:1.5.7.RELEASE")
 }
 
 task wrapper(type: Wrapper) {
