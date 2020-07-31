@@ -1,24 +1,16 @@
-package springexample;
-
-import java.util.Map;
-import java.util.HashMap;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintStream;
-import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+package service;
 
 import com.braintreegateway.BraintreeGateway;
 import com.braintreegateway.Environment;
-
-import org.junit.Assert;
 import org.junit.AfterClass;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import springexample.BraintreeGatewayFactory;
+
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BraintreeGatewayFactoryTest {
     private static File mockConfigFile;
@@ -38,7 +30,7 @@ public class BraintreeGatewayFactoryTest {
 
     @BeforeClass
     public static void createEnvironment() {
-        mockConfigMapping = new HashMap<String, String>();
+        mockConfigMapping = new HashMap<>();
         mockConfigMapping.put("BT_ENVIRONMENT", "sandbox");
         mockConfigMapping.put("BT_MERCHANT_ID", "OTHER_MERCHANT_ID");
         mockConfigMapping.put("BT_PUBLIC_KEY", "OTHER_PUBLIC_KEY");
@@ -122,7 +114,7 @@ public class BraintreeGatewayFactoryTest {
 
     @Test
     public void throwsNullPointerExceptionIfMissingElementsFromMapping() {
-        Map<String, String> emptyMapping = new HashMap<String, String>();
+        Map<String, String> emptyMapping = new HashMap<>();
         Exception exception = null;
 
         try {

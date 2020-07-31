@@ -25,12 +25,13 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compileOnly("org.springframework.boot:spring-boot-starter-web:2.3.2.RELEASE")
-    compileOnly("com.braintreepayments.gateway:braintree-java:3.0.0")
-    compileOnly("org.springframework.boot:spring-boot-starter-thymeleaf:2.3.2.RELEASE")
-    testCompileOnly("junit:junit")
-    testCompileOnly("io.rest-assured:spring-mock-mvc:4.3.1")
-    testCompileOnly("org.springframework.boot:spring-boot-starter-test:2.3.2.RELEASE")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.3.2.RELEASE")
+    implementation("com.braintreepayments.gateway:braintree-java:3.0.0")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.3.2.RELEASE")
+    testImplementation("junit:junit")
+    testImplementation("io.rest-assured:spring-mock-mvc:4.3.1")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.3.2.RELEASE")
+    testImplementation("com.braintreepayments.gateway:braintree-java:3.0.0")
 }
 
 wrapper {
