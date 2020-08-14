@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.2.RELEASE")
     }
 }
 
@@ -13,28 +13,29 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'bt-example'
-    version =  '0.1.0'
+    archiveBaseName = 'bt-example'
+    archiveVersion =  '0.1.0'
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.14
+targetCompatibility = 1.14
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE")
-    compile("com.braintreepayments.gateway:braintree-java:2.79.0")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    testCompile("junit:junit")
-    testCompile("io.rest-assured:spring-mock-mvc:3.0.3")
-    testCompile("org.springframework.boot:spring-boot-starter-test:1.5.7.RELEASE")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.3.2.RELEASE")
+    implementation("com.braintreepayments.gateway:braintree-java:3.0.0")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.3.2.RELEASE")
+    testImplementation("junit:junit")
+    testImplementation("io.rest-assured:spring-mock-mvc:4.3.1")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.3.2.RELEASE")
+    testImplementation("com.braintreepayments.gateway:braintree-java:3.0.0")
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+wrapper {
+    gradleVersion = '6.5.1'
 }
 
 task stage (
