@@ -17,7 +17,7 @@ An example Braintree integration for Spring (Java).
 3. Start server:
 
   ```
-  java -jar build/libs/bt-example-0.1.0.jar
+  java -jar build/libs/braintree_spring_example.jar
   ```
 
   This starts the server on port `8080` listening to all interfaces.
@@ -38,7 +38,7 @@ Sandbox transactions must be made with [sample credit card numbers](https://deve
 
 ## Pro Tips
 
-* Run `java -Dserver.port=4000 -jar build/libs/bt-example-0.1.0.jar` to start the server on port 4000. Replace `4000` with any number to start it on a different port.
+* Run `java -Dserver.port=4000 -jar build/libs/braintree_spring_example.jar` to start the server on port 4000. Replace `4000` with any number to start it on a different port.
 
 ## Help
 
