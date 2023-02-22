@@ -1,0 +1,32 @@
+name: Braintree Java Example
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        java: [ '17' ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: ${{ matrix.java }}
+      - run: ./gradlew build -x test
+      - run: ./gradlew test
+        env:
+          BT_ENVIRONMENT: ${{ secrets.BT_ENVIRONMENT }}
+          BT_MERCHANT_ID: ${{ secrets.BT_MERCHANT_ID }}
+          BT_PUBLIC_KEY: ${{ secrets.BT_PUBLIC_KEY }}
+          BT_PRIVATE_KEY: ${{ secrets.BT_PRIVATE_KEY }}
