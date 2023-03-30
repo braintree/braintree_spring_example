@@ -1,6 +1,6 @@
 # Braintree Spring Example
 
-[![Build Status](https://travis-ci.org/braintree/braintree_spring_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_spring_example)
+[![Build Status](https://github.com/braintree/braintree_spring_example/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/braintree/braintree_spring_example/actions/workflows/ci.yml)
 
 An example Braintree integration for Spring (Java).
 
