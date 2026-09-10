@@ -1,13 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <title>Braintree Transaction</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="/css/app.css" th:href="@{/css/app.css}" />
-  <link rel="icon" type="image/png" href="/images/favicon.png" th:href="@{/images/favicon.png}"/>
+  <link rel="icon" type="image/png" href="/images/favicon.png" th:href="@{/images/favicon.png}" />
   <script src="/javascript/vendor/jquery-2.1.4.min.js" th:src="@{/javascript/vendor/jquery-2.1.4.min.js}"></script>
-  <script src="/javascript/vendor/jquery.lettering-0.6.1.min.js" th:src="@{/javascript/vendor/jquery.lettering-0.6.1.min.js}"></script>
+  <script src="/javascript/vendor/jquery.lettering-0.6.1.min.js"
+    th:src="@{/javascript/vendor/jquery.lettering-0.6.1.min.js}"></script>
 </head>
+
 <body>
   <header class="main">
     <div class="container wide">
@@ -18,7 +21,8 @@
           </div>
 
           <div class="fit">
-            <a class="braintree" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">Braintree</a>
+            <a class="braintree" href="https://developer.paypal.com/braintree/docs/start/tutorial-hosted-fields-node/"
+              target="_blank">Braintree</a>
           </div>
         </div>
       </div>
@@ -35,11 +39,13 @@
 
         <div th:if="${isSuccess}">
           <h1>Sweet Success!</h1>
-          <section>Your test transaction has been successfully processed. See the Braintree API response and try again.</section>
+          <section>Your test transaction has been successfully processed. See the Braintree API response and try again.
+          </section>
         </div>
         <div th:unless="${isSuccess}">
           <h1>Transaction Failed</h1>
-          <section>Your test transaction has a status of <span th:text="${transaction.getStatus()}"/>. See the Braintree API response and try again.</section>
+          <section>Your test transaction has a status of <span th:text="${transaction.getStatus()}" />. See the
+            Braintree API response and try again.</section>
         </div>
 
         <section>
@@ -60,8 +66,8 @@
     </header>
 
     <article class="content compact">
-    <section>
-      <h5>Transaction</h5>
+      <section>
+        <h5>Transaction</h5>
         <table cellpadding="0" cellspacing="0">
           <tbody>
             <tr>
@@ -82,11 +88,15 @@
             </tr>
             <tr>
               <td>created_at</td>
-              <td th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getCreatedAt().getTime())}"></td>
+              <td
+                th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getCreatedAt().getTime())}">
+              </td>
             </tr>
             <tr>
               <td>updated_at</td>
-              <td th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getUpdatedAt().getTime())}"></td>
+              <td
+                th:text="${new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm:ss Z').format(transaction.getUpdatedAt().getTime())}">
+              </td>
             </tr>
           </tbody>
         </table>
@@ -175,8 +185,7 @@
       </section>
 
       <section>
-        <a class="button secondary full" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">
-          <span>See the Docs</span>
+        <a class="button secondary full" href="https://developer.paypal.com/braintree/docs/start/hosted-fields/
         </a>
       </section>
     </article>
